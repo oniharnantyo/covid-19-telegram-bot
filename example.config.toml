@@ -1,0 +1,4 @@
+token = "YOUR_TELEGRAM_BOT_TOKEN"
+port = "3000"
+mathdroid_url = "https://covid19.mathdro.id/api"
+locationiq_token = "YOUR_LOCATIONIQ_TOKEN"
