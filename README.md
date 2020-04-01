@@ -39,7 +39,7 @@ locationiq_token = "YOUR_LOCATIONIQ_TOKEN"
 ```go run main.go```
 
 ### Set url to Telegram Bot
-```curl -F "url=https://b9bc085a.ngrok.io"  https://api.telegram.org/bot<YOUR_TELEGRAM_BOT>/setWebhook```
+```curl -F "url=https://YOUR_URL"  https://api.telegram.org/bot<YOUR_TELEGRAM_BOT>/setWebhook```
 
 note : When you restart the program, you must hit this url again
 
