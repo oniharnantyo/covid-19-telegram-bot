@@ -22,7 +22,7 @@ Worldwide summary :
 😇 Death			: %d
 
 👉 /latest  Get latest updates
-👉 /death  Get latest deaths summary
+👉 /my_location  Get updates around your location
 
 Data source : [covid-19 API](https://github.com/mathdroid/covid-19-api)
 Created By : [Oni Harnantyo](https://www.linkedin.com/in/oniharnantyo/)
@@ -48,7 +48,23 @@ func Init(bot *telebot.Bot, locationiqToken string) *telebot.Bot {
 	}
 
 	bot.Handle("/start", func(m *telebot.Message) {
-		bot.Send(m.Sender, fmt.Sprintf(START_RESOURCES, m.Sender.FirstName, summary.Confirmed.Value, summary.Recovered.Value, summary.Deaths.Value), &telebot.SendOptions{
+		bot.Send(m.Sender, fmt.Sprintf(`
+Covid-19 Updates #ItsCoronaTime
+				
+Hi %s, This bot provide latest information about Covid-19 Updates
+
+Worldwide summary : 
+😷 Confirmed	: %d
+😃 Recovered	: %d
+😇 Death			: %d
+
+👉 /latest  Get latest updates
+👉 /my_location  Get updates around your location
+
+Data source : [covid-19 API](https://github.com/mathdroid/covid-19-api)
+Created By : [Oni Harnantyo](https://www.linkedin.com/in/oniharnantyo/)
+
+Keep fight againts Covid-19 and Stay Safe!!!`, m.Sender.FirstName, summary.Confirmed.Value, summary.Recovered.Value, summary.Deaths.Value), &telebot.SendOptions{
 			ParseMode: telebot.ModeMarkdown,
 		})
 	})
@@ -67,7 +83,6 @@ func Init(bot *telebot.Bot, locationiqToken string) *telebot.Bot {
 | Country | 😷 Confirmed | 😃 Recovered | 😇 Death |
 `
 		for _, confirmed := range confirmeds {
-			fmt.Println("row", confirmed)
 			bodyTables = fmt.Sprintf(`
 %s
 | %s | %d | %d | %d |
@@ -81,7 +96,7 @@ func Init(bot *telebot.Bot, locationiqToken string) *telebot.Bot {
 		})
 	})
 
-	bot.Handle("/around-me", func(m *telebot.Message) {
+	bot.Handle("/my_location", func(m *telebot.Message) {
 		bot.Send(m.Sender, fmt.Sprintf(`
 Please, send your location to get information.
 `))
